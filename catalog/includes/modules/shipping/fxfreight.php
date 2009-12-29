@@ -275,7 +275,7 @@
         }
       }
       
-      if (count($sql > 0)) {
+      if (count($sql) > 0) {
         $sql = implode(',', $sql);
         tep_db_query("ALTER TABLE `" . TABLE_PRODUCTS . "` ADD " . $sql);
       }
