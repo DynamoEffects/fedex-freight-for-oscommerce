@@ -253,6 +253,32 @@
       tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Tax Class', 'MODULE_SHIPPING_FXFREIGHT_TAX_CLASS', '0', 'Use the following tax class on the shipping fee.', '6', '0', 'tep_get_tax_class_title', 'tep_cfg_pull_down_tax_classes(', now())");
       tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Shipping Zone', 'MODULE_SHIPPING_FXFREIGHT_ZONE', '0', 'If a zone is selected, only enable this shipping method for that zone.', '6', '0', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes(', now())");
       tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort order of display.', 'MODULE_SHIPPING_FXFREIGHT_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', now())");
+      
+      $col_query = tep_db_query("SHOW COLUMNS FROM " . TABLE_PRODUCTS);
+      $sql = array(
+        'products_fxf_class' => "`products_fxf_class` VARCHAR( 3 ) DEFAULT '050' NOT NULL"
+        'products_fxf_desc' => "`products_fxf_desc` VARCHAR( 100 )"
+        'products_fxf_nmfc' => "`products_fxf_nmfc` VARCHAR( 100 )"
+        'products_fxf_haz' => "`products_fxf_haz` TINYINT DEFAULT '0' NOT NULL"
+        'products_fxf_freezable' => "`products_fxf_freezable` TINYINT DEFAULT '0' NOT NULL"
+      );
+      
+      while ($col = tep_db_fetch_array($col_query)) {
+        switch ($col['Field']) {
+          case 'products_fxf_class':
+          case 'products_fxf_desc':
+          case 'products_fxf_nmfc':
+          case 'products_fxf_haz':
+          case 'products_fxf_freezable':
+            unset($sql[$col['Field']]);
+            break;
+        }
+      }
+      
+      if (count($sql > 0)) {
+        $sql = implode(',', $sql);
+        tep_db_query("ALTER TABLE `" . TABLE_PRODUCTS . "` ADD " . $sql);
+      }
     }
 
     function remove() {
