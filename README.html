@@ -1,0 +1,446 @@
+<html>
+  <head>
+    <title>FedEx Freight Shipping Module for osCommerce</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+      
+      table {
+        font: 11px verdana;
+      }
+      td.topHeader {font-family:verdana, Arial, Helvetica, Sans-serif; border-bottom:1px solid #ccc; padding: 20px 11px 4px 11px;}
+      td.topHeader H2 {font-size:26px; line-height:0px; color:#4B7EAD; margin:0px;}
+      td.topHeader H3, td.topHeader H1 {font-size:18px; line-height:15px; color:#365A7C; font-weight:bold; margin:4px 0px 0px 0px;}
+      
+      .section-header {
+          font-family:verdana, Arial, Helvetica, Sans-serif;
+          font-size:18px; 
+          line-height:15px; 
+          color:#365A7C; 
+          font-weight:bold;
+      }
+      
+      .section-body {
+        padding-left: 15px;
+      }
+      
+      #submit {
+        border: 3px double #999999;
+        border-top-color: #CCCCCC;
+        border-left-color: #CCCCCC;
+        padding: 0.25em;
+        background-color: #FFFFFF;
+        background-repeat: repeat-x;
+        color: #333333;
+        font-size: 100%;
+        width: 70px;
+        font-weight: bold;
+        font-family: Verdana, Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        cursor: hand;
+      }
+      fieldset{
+        border-color: #333333;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px;
+      }
+      legend{
+        background-color: #FFFFCC;
+        text-align: center;
+        border-color: #666666;
+        border-style: solid;
+        border-width: 1px;
+        font-weight: bold;
+        padding: 2px;
+      }
+      textarea {
+        height: 90px;
+        width: 100%;
+        border: 1px solid #000;
+        background-color: #EFEFEF;
+      }
+      li {
+        line-height: 18px;
+      }
+
+    </style>
+    <script language="javascript">
+      function show_panel(id) {
+        for (x = 0; x < 7; x++) {
+          if (id == x)
+            document.getElementById('blk_'+x).style.display = "block";
+          else
+            document.getElementById('blk_'+x).style.display = "none";
+        }
+        window.scroll(0,0);
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+      <table border=0 style="width:768px;height:100%" cellspacing=0 cellpadding=0>
+        <tr>
+          <td class="topHeader" valign="middle" colspan=3><h2>FedEx Freight Shipping Module</h2><br><h1>for osCommerce 2.2 MS2</h1><br>by Brian Burton (<a href="http://forums.oscommerce.com/index.php?showuser=80233" target="_BLANK">dynamoeffects</a>)</td>
+        </tr>
+        <tr>
+          <td style="height: 3px;background-color:#000000" colspan=3></td>
+        </tr>
+        <tr>
+          <td valign="top" style="width: 180px;padding-right: 5px; padding-top: 20px">
+            <table border=0 width="100%" cellspacing=0 cellpadding=0>
+              <tr>
+                <td align="center" class="section-header">Menu</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul style="font-weight:bold">
+                    <li><a href="http://www.oscommerce.com/community/contributions,3655" target="_BLANK">Latest Release</a></li>
+                    <br><br>
+                    <li><a href="javascript:void(0);" onClick="show_panel(0);">Introduction</a></li>
+                    <li><a href="javascript:void(0);" onClick="show_panel(1);">Requirements</a></li>
+                    <li><a href="javascript:void(0);" onClick="show_panel(2);">Known Issues & Limitations</a></li>
+                    <br><br>
+                    <li><a href="javascript:void(0);" onClick="show_panel(3);"><b>Installation</b></a></li>
+                    <li><a href="javascript:void(0);" onClick="show_panel(4);">Upgrading</a></li>
+                    <br><br>
+                    <li><a href="javascript:void(0);" onClick="show_panel(5);"><b>Troubleshooting</b></a></li>
+                    <li><a href="javascript:void(0);" onClick="show_panel(6);">Changelog</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table border=0 cellspacing=0 cellpadding=5 style="border: 1px solid #000000; width: 170px; background-color: #EFEFEF">
+                    <tr>
+                      <td align="center"><b>Make a Donation!</b><br>(with PayPal)</td>
+                    </tr>
+                    <tr>
+                      <td align="center">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target=_blank name=donate>
+                          <input type="hidden" name="cmd" value="_xclick">
+                          <input type="hidden" name="business" value="paypal@dynamoeffects.com">
+                          <input type="hidden" name="item_name" value="osCommerce FedEx Freight Shipping Module Module - Donation">
+                          <input type="hidden" name="no_shipping" value="0">
+                          <input type="hidden" name="item_number" value="1">
+                          $
+                          <input type="text" name="amount" value="20.00" size=6 style="width: 50px">
+                          <input type="submit" name="submit" value="Donate!" id="submit">
+                        </form>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding-top:0px;">Many hours have been spent writing and supporting this module.  If it helped you out (and is making you money), donations are a great way of saying "Thanks!"</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 1px;background-color:#000000; font: 1px arial">&nbsp;</td>
+          <td style="width: 587px; padding-top: 20px" valign="top" align="right">
+            <table border=0 cellspacing=0 cellpadding=0 style="width: 577px">
+              <tr>
+                <td>
+                  <div id="blk_0">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="introduction">Introduction</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+This shipping module is for FedEx's Freight Service.  It will contact FedEx's server and give you a quote on all the items in your shipment.  It adds additional fields to the product editor in the admin section that are necessary to calculate an accurate price.
+<br><br>
+<b>IMPORTANT NOTE: FedEx Freight does not support estimates for shipments from one Canadian address to another. Shipping from US to US, Canada to the US, or vice versa works fine.</b>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_1" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="requirements">Requirements</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <b>To use this, you need these things (ask your webhost if you don't know):</b><br>
+                        <ul>
+                          <li>Your server must either have fopen() or cURL enabled and functional</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_2" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="issues">Known Issues & Limitations</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <b>These are known issues with this module that include bugs, unfinished features, and strange behaviors.  This means that it's not necessary to bring them up in the forums or by email unless you have a solution.</b><br>
+                        <ul>
+                          <li>IMPORTANT NOTE: FedEx Freight does not support estimates for shipments from one Canadian address to another. Shipping from US to US, Canada to the US, or vice versa works fine.</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_3" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="installation">Installation Instructions</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <center><b>Do a complete backup of your store and database before installing this!</b></center>
+                        <br>
+                        <fieldset>
+                          <legend>STEP #1 - Backup Your Store</legend>
+                          <ol>
+                            <li>Completely backup your store AND database and download them to your computer.</li>
+                          </ol>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #2 - Upload the new files</legend>
+                          <ul>
+                          	<li>/catalog/includes/modules/shipping/fxfreight.php</li>
+                            <li>/catalog/includes/languages/english/modules/shipping/fxfreight.php</li>
+                          </ul>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #3 - Update your database</legend>
+                          <ul>
+                          	<li>Using the included fxfreight.sql file, update your database using phpMyAdmin or similar tool.</li>
+                          </ul>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #4 - Modify /catalog/admin/categories.php</legend>
+                          <ul>
+                          	<li>Use the included categories.php file to update your store.  Changes can be found by searching for blocks of code between:<br />//---FedEx Freight Modification START ---//<br />//---FedEx Freight Modification END ---//<br /><br /><b>There are a total of 5 <u>required</u> changes.</b></li>
+                          </ul>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #5 - Modify /catalog/admin/includes/languages/english/categories.php</legend>
+                          <ul>
+                          	<li>Use the included categories.php language file to update your store.  Changes can be found by searching for blocks of code between:<br />//---FedEx Freight Modification START ---//<br />//---FedEx Freight Modification END ---//<br /><br /><b>There is only 1 <u>required</u> change.</b></li>
+                          </ul>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #6 - Enable and Configure Module</legend>
+                          <ol>
+                          	<li>Go into your Administration section -> Modules -> Shipping and enable the "FedEx Freight" module.</li>
+                            <li>Click "Edit" and configure the module for your store.</li>
+                            <li>Click "Update" to save your settings.</li>
+                          </ol>
+                        </fieldset>
+                        <br/>
+                        <fieldset>
+                          <legend>STEP #7 - Test your installation</legend>
+                          <ul>
+                          	<li>Add an item to your cart and go to the checkout_shipping.php page to test if FedEx Freight returns a shipping price.</li>
+                          </ul>
+                        </fieldset>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_4" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="updating">Updating Instructions</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <center><b>Follow these instructions to the letter or you might leave old values in your database!</b></center>
+                        <br>
+                        1. Go into your administrative section -> Modules -> Shipping and copy down all of the settings for this module.
+                        <br><br>
+                        2. Click on "Remove" and uninstall this module.
+                        <br><br>
+                        3. Upload the latest version of this shipping module to includes/modules/shipping/fxfreight.php, overwriting the old one.
+                        <br><br>
+                        4. Click on the "Install" button and reenter all of your settings.
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_5" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="troubleshooting">Troubleshooting</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <b>Q: FedEx Freight always returns an error!</b><br><br>
+                        <b>A:</b> Make sure your products' freight settings are valid and also ensure that your web host allows outward bound connections using fopen or cURL.
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_6" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="changelog">Changelog</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        
+                        <fieldset>
+                          <legend>{0.1} 2005-10-13 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Initial Release</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.2} 2005-10-14 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Added more error handling so the script doesn't just die when it receives an error</li>
+                          	<li>urlencodes() the description and nmfc fields.  Spaces in these fields before would cause errors.</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.3} 2005-10-17 (Brian Burton)</legend>
+
+                          <ul>
+                          	<li>Fixed a bug where it didn't always round off the shipping weight correctly. (Thanks michiganmotorz)</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.4} 2005-10-20 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Fixed the bug where products with quanities greater than 1 wouldn't calculate correctly</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.5} 2005-10-26 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Made it an option to email a log to the store owner if FedEx returns an error.  Makes debugging easier.</li>
+                          	<li>Updated some wording to fit the new error option</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.6} 2006-04-12 (Brian Burton)</legend>
+                          <ul>
+                          	<li>If the shipping price was $1,000 or over, it would return an error because FedEx puts commas in their prices.  This is fixed.</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.7} 2007-01-19 (Brian Burton)</legend>
+
+                          <ul>
+                          	<li>Fixed bug that would disable module for Canadian customers</li>
+                          	<li>Canadian zipcodes have spaces, so now the zipcodes are stripped of whitespace before substr'd</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.8} 2007-03-30 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Improved zip code formatting before they get sent to FedEx</li>
+                          	<li>If shipping from and to addresses in Canada, the module now displays a better error.</li>
+                          	<li>Added a new define for the canadian error</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{0.9} 2007-08-08 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Added additional connection method so that if your host doesn't allow fopen to make remote connections, it will try using cURL.</li>
+                          </ul>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                          <legend>{1.0} 2009-07-07 (Brian Burton)</legend>
+                          <ul>
+                          	<li>Fixed a weight miscalculation problem (thanks to sojomy)</li>
+                          </ul>
+                        </fieldset>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="blk_7" style="display:none">
+                  <table border=0 cellspacing=0 cellpadding=0 width="100%">
+                    <tr>
+                      <td class="section-header"><a name="requirements">Contributions</a></td>
+                    </tr>
+                    <tr>
+                      <td class="section-body">
+                        <br>
+                        <u><b>Main Contributors</b></u><br>
+                        <ul>
+                          <li>Brian Burton (dynamoeffects)</li>
+                          <li>Glen Hoag (SteveDallas)</li>
+                          <li>Stew (djmonkey1)</li>
+                        </ul>
+                        <br>
+                        <u><b>Hoisted Code</b></u><br>
+                        <ul>
+                          <li>The XML files, except transactionSearch.xml, came from pbreit's PayPal WPP module.</li>
+                          <li>The wpp_parse_xml() function came from php.net and was written by vladson at pc-labs dot info.</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td style="height: 3px;background-color:#000000"></td>
+              </tr>
+              <tr>
+                <td style="height: 10px"></td>
+              </tr>
+              <tr>
+                <td align="center" style="padding: 5px 0px 10px 0px">THIS IS RELEASED WITH NO WARRANTY WHATSOEVER! It's not my fault if it crashes, fills your screen with errors, eats all the food in your fridge, kills your dog, steals your soul, sets the sky on fire, pees on the seat, causes rivers to run red with blood,  initiates the second coming, or just plain doesn't work.  This was written in my free time.  Use the forums for support.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
